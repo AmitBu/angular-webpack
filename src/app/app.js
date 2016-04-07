@@ -1,7 +1,10 @@
 import angular from 'angular';
-import about from '../about/about'
+import uirouter from 'angular-ui-router';
+import routing from './config';
 
+import about from './about/about';
 
+// Style imports
 import '../style/app.css';
 
 
@@ -13,18 +16,14 @@ let appComponent = {
 
 class AppCtrl {
   constructor() {
-    this.url = 'https://github.com/preboot/angular-webpack';
+      this.url = '';
+      this.data = 'Data passed from app'
   }
 }
 
-let runFunc = () => {
+let app = angular.module('app', [uirouter, about]);
 
-};
-
-const MODULE_NAME = 'app';
-let app = angular.module(MODULE_NAME, [about]);
-
-app.run(runFunc)
+app.config(routing)
    .component('app', appComponent)
    .controller('AppCtrl', AppCtrl);
 

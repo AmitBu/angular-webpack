@@ -1,14 +1,22 @@
 import angular from 'angular';
 
+class AboutCtrl {
+    constructor() {
+        this.name = "Amit";
+    }
+
+    changeName() {
+        this.name = "Stam"
+    }
+}
+
 let options =  {
     bindings: {
-        count: '='
+        data: '='
     },
     template: require('./about.html'),
     controllerAs: "about",
-    controller: function() {
-        this.name = "Amit";
-    }
+    controller: AboutCtrl
 };
 
 export default angular.module("app.about", [])
