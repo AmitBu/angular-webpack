@@ -1,13 +1,14 @@
 import angular from 'angular';
+import about from '../about/about'
+
 
 import '../style/app.css';
 
-let app = () => {
-  return {
+
+let appComponent = {
     template: require('./app.html'),
     controller: 'AppCtrl',
     controllerAs: 'app'
-  }
 };
 
 class AppCtrl {
@@ -16,10 +17,18 @@ class AppCtrl {
   }
 }
 
+let runFunc = () => {
+
+};
+
 const MODULE_NAME = 'app';
+let app = angular.module(MODULE_NAME, [about]);
 
-angular.module(MODULE_NAME, [])
-  .directive('app', app)
-  .controller('AppCtrl', AppCtrl);
+app.run(runFunc)
+   .component('app', appComponent)
+   .controller('AppCtrl', AppCtrl);
 
-export default MODULE_NAME;
+
+export default app;
+
+
